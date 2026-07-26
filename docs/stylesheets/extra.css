@@ -1,9 +1,265 @@
-:root {
-  --md-primary-fg-color: #6c5ce7;
-  --md-primary-fg-color--light: #a29bfe;
-  --md-primary-fg-color--dark: #4834d4;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root,
+[data-md-color-scheme="slate"] {
+  --nrs-bg: #0a0a0a;
+  --nrs-surface: #141414;
+  --nrs-surface-2: #1a1a1a;
+  --nrs-border: rgba(255, 255, 255, 0.09);
+  --nrs-border-strong: rgba(255, 255, 255, 0.22);
+  --nrs-fg: #f5f5f5;
+  --nrs-fg-muted: #a3a3a3;
+  --nrs-radius-lg: 20px;
+  --nrs-radius-md: 14px;
+  --nrs-radius-pill: 999px;
+
+  --md-default-bg-color: var(--nrs-bg) !important;
+  --md-default-fg-color: var(--nrs-fg) !important;
+  --md-default-fg-color--light: var(--nrs-fg-muted) !important;
+  --md-default-fg-color--lighter: #6b6b6b !important;
+  --md-primary-fg-color: var(--nrs-bg) !important;
+  --md-primary-bg-color: #ffffff !important;
+  --md-accent-fg-color: #ffffff !important;
+  --md-typeset-a-color: #ffffff !important;
+  --md-code-bg-color: var(--nrs-surface) !important;
+  --md-code-fg-color: #d4d4d4 !important;
+  --md-footer-bg-color: var(--nrs-bg) !important;
+  --md-footer-bg-color--dark: #000000 !important;
 }
 
-.md-header__button.md-logo img {
-  height: 1.4rem;
+[data-md-color-scheme="default"] {
+  --nrs-bg: #ffffff;
+  --nrs-surface: #f5f5f5;
+  --nrs-surface-2: #ececec;
+  --nrs-border: rgba(0, 0, 0, 0.09);
+  --nrs-border-strong: rgba(0, 0, 0, 0.22);
+  --nrs-fg: #0a0a0a;
+  --nrs-fg-muted: #595959;
+
+  --md-primary-fg-color: #0a0a0a !important;
+  --md-accent-fg-color: #0a0a0a !important;
+  --md-typeset-a-color: #0a0a0a !important;
+  --md-code-bg-color: var(--nrs-surface) !important;
 }
+
+body,
+input {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--nrs-fg) !important;
+}
+
+.md-typeset a {
+  color: var(--nrs-fg) !important;
+  text-decoration: underline;
+  text-decoration-color: var(--nrs-border-strong);
+  text-underline-offset: 3px;
+}
+
+.md-typeset a:hover {
+  text-decoration-color: var(--nrs-fg);
+}
+
+.md-nav__title {
+  background-color: transparent !important;
+  color: var(--nrs-fg) !important;
+}
+
+.md-nav__link--active,
+.md-nav__link:focus,
+.md-nav__link:hover {
+  color: var(--nrs-fg) !important;
+}
+
+/* ---- header / tabs: always pure black, regardless of scheme ---- */
+.md-header,
+.md-tabs {
+  background-color: #0a0a0a !important;
+  border-bottom: 1px solid var(--nrs-border);
+}
+
+.md-header__title,
+.md-tabs__link,
+.md-header__topic {
+  color: #f5f5f5 !important;
+}
+
+.md-tabs__link--active {
+  color: #ffffff !important;
+  font-weight: 600;
+}
+
+.md-header__button.md-logo img,
+.md-header__button.md-logo svg {
+  height: 1.4rem;
+  width: auto;
+}
+
+.md-search__input {
+  border-radius: var(--nrs-radius-pill) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ---- pill buttons ---- */
+.md-typeset .md-button {
+  border-radius: var(--nrs-radius-pill) !important;
+  font-weight: 600;
+  padding: 0.6em 1.5em;
+  border: 1px solid var(--nrs-border-strong);
+  transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.md-typeset .md-button--primary {
+  background: #ffffff !important;
+  color: #0a0a0a !important;
+  border: none;
+}
+
+.md-typeset .md-button:not(.md-button--primary) {
+  background: transparent !important;
+  color: var(--nrs-fg) !important;
+}
+
+.md-typeset .md-button:hover {
+  transform: translateY(-1px);
+  opacity: 0.9;
+}
+
+/* ---- cards (grid-cards markdown extension) ---- */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: var(--nrs-radius-lg) !important;
+  background: var(--nrs-surface) !important;
+  border: 1px solid var(--nrs-border) !important;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  border-color: var(--nrs-border-strong);
+  transform: translateY(-2px);
+}
+
+/* ---- admonitions: rounder, flatter ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--nrs-radius-md);
+  border: 1px solid var(--nrs-border);
+}
+
+/* ---- code blocks ---- */
+.md-typeset pre > code,
+.md-typeset .highlight {
+  border-radius: var(--nrs-radius-md);
+}
+
+/* ================= custom hero / badge / stats (used on index.md) ================= */
+
+.nrs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.4em 1.1em;
+  border-radius: var(--nrs-radius-pill);
+  border: 1px solid var(--nrs-border-strong);
+  background: var(--nrs-surface-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--nrs-fg-muted);
+  margin-bottom: 1.5rem;
+}
+
+.nrs-hero {
+  position: relative;
+  text-align: center;
+  padding: 4.5rem 2rem 3.5rem;
+  border-radius: var(--nrs-radius-lg);
+  border: 1px solid var(--nrs-border);
+  background-color: var(--nrs-surface);
+  background-image: radial-gradient(circle, var(--nrs-border-strong) 1px, transparent 1px);
+  background-size: 24px 24px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.nrs-hero h1 {
+  font-size: 2.75rem;
+  line-height: 1.15;
+  margin: 0.2em 0 0.5em;
+}
+
+.nrs-hero .nrs-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--nrs-border-strong);
+  text-underline-offset: 8px;
+}
+
+.nrs-hero p.nrs-lede {
+  max-width: 42rem;
+  margin: 0 auto 1.75rem;
+  color: var(--nrs-fg-muted);
+  font-size: 1.05rem;
+}
+
+.nrs-pillrow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 0.85rem;
+  color: var(--nrs-fg-muted);
+}
+
+.nrs-pillrow span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.nrs-hero .md-button {
+  margin: 0 0.4rem;
+}
+
+.nrs-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--nrs-border);
+}
+
+.nrs-stats .nrs-stat-num {
+  display: block;
+  font-size: 1.9rem;
+  font-weight: 800;
+}
+
+.nrs-stats .nrs-stat-label {
+  font-size: 0.78rem;
+  color: var(--nrs-fg-muted);
+}
+
+/* ---- resource/product tag pills, used on resources/index.md ---- */
+.nrs-tag {
+  display: inline-block;
+  padding: 0.2em 0.8em;
+  border-radius: var(--nrs-radius-pill);
+  border: 1px solid var(--nrs-border-strong);
+  background: var(--nrs-surface-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.nrs-tag--free { color: #4ade80; }
+.nrs-tag--paid { color: #facc15; }
+.nrs-tag--active { color: #60a5fa; }
