@@ -5,30 +5,37 @@ hide:
   - toc
 ---
 
-<div align="center" markdown>
+<div class="nrs-hero" markdown>
 
-![Next Resource Studio](assets/banner.png)
+<span class="nrs-badge">:material-lightning-bolt-outline: Next Resource Studio</span>
 
-# Next Resource Studio
+# Docs, built like our <span class="nrs-underline">resources</span>
 
-Documentation for all FiveM resources by Next Resource Studio.
+<p class="nrs-lede">Setup guides, config references, and troubleshooting for every FiveM script, server, and website we ship.</p>
+
+<span class="nrs-pillrow">
+<span>:material-code-braces: FiveM scripts</span>
+<span>:material-server: Custom servers</span>
+<span>:material-web: Websites</span>
+</span>
 
 [Browse Resources](resources/index.md){ .md-button .md-button--primary }
 [Getting Started](getting-started.md){ .md-button }
 
+<div class="nrs-stats">
+<div><span class="nrs-stat-num">8</span><span class="nrs-stat-label">Resources documented</span></div>
+<div><span class="nrs-stat-num">4</span><span class="nrs-stat-label">Frameworks supported</span></div>
 </div>
 
----
+</div>
 
 ## What's here
 
-This site collects setup guides, config references, and troubleshooting for every resource we publish.
-
 <div class="grid cards" markdown>
 
-- :material-cube-outline: **[Ice_crafting](resources/ice_crafting/index.md)**
+- :material-view-grid-outline: **[Browse all Resources](resources/index.md)**
 
-    Prop-based crafting stations for QBox and ESX Legacy, with a dark/minimal NUI.
+    Ice_crafting, Ice_ambulancejob, ice_factions, Ice_ownablebanks, Ice_radio, Ice_tablet, Ice_fleetkiosk, and Ice_Policejob.
 
 - :material-book-open-page-variant: **[Getting Started](getting-started.md)**
 

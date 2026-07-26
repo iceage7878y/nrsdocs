@@ -1,10 +1,9 @@
 # Support
 
-<!-- TODO: fill in your real support channels -->
-
-- **Discord:** [discord.gg/your-invite](https://discord.gg/your-invite)
+- **Discord:** [discord.gg/J7syPuF7mc](https://discord.gg/J7syPuF7mc)
+- **Store:** [nrstudio.dk](https://nrstudio.dk/)
 - **Bug reports / feature requests:** open an issue on the resource's GitHub repository.
-- **Purchases / licensing:** see your Tebex / store page.
+- **Purchases / licensing:** see the store page above.
 
 Before asking for help, please check the resource's **FAQ** page and confirm:
 
