@@ -2,35 +2,36 @@ site_name: Next Resource Studio Docs
 site_description: Documentation for Next Resource Studio FiveM resources
 site_author: Next Resource Studio
 
-site_url: https://iceage7878y.github.io/nrsdocs/
-repo_url: https://github.com/iceage7878y/nrsdocs
-repo_name: iceage7878y/nrsdocs
+# TODO: set these once the docs repo lives on GitHub
+site_url: https://your-org.github.io/nrs-docs/
+repo_url: https://github.com/your-org/nrs-docs
+repo_name: your-org/nrs-docs
 
 theme:
   name: material
   logo: assets/logo.png
   favicon: assets/logo.png
-  font:
-    text: Inter
-    code: JetBrains Mono
   palette:
-    - scheme: slate
-      primary: black
-      accent: white
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-    - scheme: default
-      primary: black
-      accent: black
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
   features:
     - navigation.tabs
+    - navigation.sections
+    - navigation.expand
     - navigation.top
     - navigation.footer
-    - navigation.indexes
     - search.suggest
     - search.highlight
     - content.code.copy
@@ -49,9 +50,6 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
   - tables
@@ -69,56 +67,11 @@ nav:
           - Configuration: resources/ice_crafting/configuration.md
           - Events & Exports: resources/ice_crafting/events-exports.md
           - FAQ: resources/ice_crafting/faq.md
-      - Ice_ambulancejob:
-          - Overview: resources/ice_ambulancejob/index.md
-          - Installation: resources/ice_ambulancejob/installation.md
-          - Configuration: resources/ice_ambulancejob/configuration.md
-          - Events & Exports: resources/ice_ambulancejob/events-exports.md
-          - FAQ: resources/ice_ambulancejob/faq.md
-      - ice_factions:
-          - Overview: resources/ice_factions/index.md
-          - Installation: resources/ice_factions/installation.md
-          - Configuration: resources/ice_factions/configuration.md
-          - Events & Exports: resources/ice_factions/events-exports.md
-          - FAQ: resources/ice_factions/faq.md
-      - Ice_ownablebanks:
-          - Overview: resources/ice_ownablebanks/index.md
-          - Installation: resources/ice_ownablebanks/installation.md
-          - Configuration: resources/ice_ownablebanks/configuration.md
-          - Events & Exports: resources/ice_ownablebanks/events-exports.md
-          - FAQ: resources/ice_ownablebanks/faq.md
-      - Ice_radio:
-          - Overview: resources/ice_radio/index.md
-          - Installation: resources/ice_radio/installation.md
-          - Configuration: resources/ice_radio/configuration.md
-          - Events & Exports: resources/ice_radio/events-exports.md
-          - FAQ: resources/ice_radio/faq.md
-      - Ice_tablet:
-          - Overview: resources/ice_tablet/index.md
-          - Installation: resources/ice_tablet/installation.md
-          - Configuration: resources/ice_tablet/configuration.md
-          - Events & Exports: resources/ice_tablet/events-exports.md
-          - Custom Apps: resources/ice_tablet/custom-apps.md
-          - FAQ: resources/ice_tablet/faq.md
-      - Ice_fleetkiosk:
-          - Overview: resources/ice_fleetkiosk/index.md
-          - Installation: resources/ice_fleetkiosk/installation.md
-          - Configuration: resources/ice_fleetkiosk/configuration.md
-          - Events & Exports: resources/ice_fleetkiosk/events-exports.md
-          - FAQ: resources/ice_fleetkiosk/faq.md
-      - Ice_Policejob:
-          - Overview: resources/ice_policejob/index.md
-          - Installation: resources/ice_policejob/installation.md
-          - Configuration: resources/ice_policejob/configuration.md
-          - Events & Exports: resources/ice_policejob/events-exports.md
-          - FAQ: resources/ice_policejob/faq.md
   - Support: support.md
 
 extra:
   social:
-    - icon: material/web
-      link: https://nrstudio.dk/
     - icon: fontawesome/brands/discord
-      link: https://discord.gg/J7syPuF7mc
+      link: https://discord.gg/your-invite
     - icon: fontawesome/brands/github
-      link: https://github.com/iceage7878y
+      link: https://github.com/your-org
