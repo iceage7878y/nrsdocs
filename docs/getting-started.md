@@ -7,7 +7,7 @@ General setup notes that apply across most Next Resource Studio resources. Resou
 - A FiveM server on a recent artifact build.
 - [ox_lib](https://overextended.dev/ox_lib) — used by most resources for locales, callbacks, and UI helpers.
 - [oxmysql](https://github.com/overextended/oxmysql) — required by any resource that persists data (leveling, stats, etc).
-- One supported framework: **QBox** or **ESX Legacy**.
+- One supported framework: **QBox**, **QBCore**, **ESX Legacy**, or (on select resources) **Legacy vRP1**. Check each resource's Compatibility table — not every resource supports every framework.
 - One supported inventory: **ox_inventory** or **qb-inventory**.
 - One supported targeting system: **ox_target** or **qb-target** (a built-in fallback interaction is used otherwise).
 

@@ -23,8 +23,8 @@ hide:
 [Getting Started](getting-started.md){ .md-button }
 
 <div class="nrs-stats">
-<div><span class="nrs-stat-num">1</span><span class="nrs-stat-label">Resources documented</span></div>
-<div><span class="nrs-stat-num">2</span><span class="nrs-stat-label">Frameworks supported</span></div>
+<div><span class="nrs-stat-num">8</span><span class="nrs-stat-label">Resources documented</span></div>
+<div><span class="nrs-stat-num">4</span><span class="nrs-stat-label">Frameworks supported</span></div>
 </div>
 
 </div>
@@ -33,9 +33,9 @@ hide:
 
 <div class="grid cards" markdown>
 
-- :material-cube-outline: **[Ice_crafting](resources/ice_crafting/index.md)**
+- :material-view-grid-outline: **[Browse all Resources](resources/index.md)**
 
-    Prop-based crafting stations for QBox and ESX Legacy, with a dark/minimal NUI.
+    Ice_crafting, Ice_ambulancejob, ice_factions, Ice_ownablebanks, Ice_radio, Ice_tablet, Ice_fleetkiosk, and Ice_Policejob.
 
 - :material-book-open-page-variant: **[Getting Started](getting-started.md)**
 
