@@ -2,30 +2,30 @@ site_name: Next Resource Studio Docs
 site_description: Documentation for Next Resource Studio FiveM resources
 site_author: Next Resource Studio
 
-# TODO: set these once the docs repo lives on GitHub
-site_url: https://your-org.github.io/nrs-docs/
-repo_url: https://github.com/your-org/nrs-docs
-repo_name: your-org/nrs-docs
+site_url: https://iceage7878y.github.io/nrsdocs/
+repo_url: https://github.com/iceage7878y/nrsdocs
+repo_name: iceage7878y/nrsdocs
 
 theme:
   name: material
   logo: assets/logo.png
   favicon: assets/logo.png
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
+    - scheme: slate
+      primary: black
+      accent: white
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+    - scheme: default
+      primary: black
+      accent: black
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
   features:
     - navigation.tabs
     - navigation.sections
@@ -50,6 +50,9 @@ markdown_extensions:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
       permalink: true
   - tables
