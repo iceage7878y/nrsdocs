@@ -30,10 +30,6 @@ This site collects setup guides, config references, and troubleshooting for ever
 
     Prop-based crafting stations for QBox and ESX Legacy, with a dark/minimal NUI.
 
-- :material-walkie-talkie: **[Ice_radio](resources/ice_radio/index.md)**
-
-    Handheld/mobile radio with trunked channels, encryption, and a dual voice backend.
-
 - :material-book-open-page-variant: **[Getting Started](getting-started.md)**
 
     Dependencies, install steps, and conventions shared across all resources.
