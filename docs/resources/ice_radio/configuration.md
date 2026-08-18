@@ -5,12 +5,18 @@ All configuration lives in `config.lua`. Sections below follow the same order as
 ## Framework & voice backend
 
 ```lua title="config.lua"
+<<<<<<< HEAD
 Config.Framework = 'auto'           -- 'auto' | 'esx' | 'qbox' | 'qbcore'
 Config.VoiceBackend = 'pma-voice'   -- 'pma-voice' | 'standalone'
 Config.PmaVoice = {
     channelMode = 'id',             -- 'id' (recommended) | 'frequency'
 }
 Config.RadioTalksIngame = true
+=======
+Config.Framework = 'auto'          -- 'auto' | 'esx' | 'qbox' | 'qbcore'
+Config.VoiceBackend = 'pma-voice'  -- or 'standalone'
+Config.RadioTalksIngame = true     -- also talk on proximity while radio PTT is held
+>>>>>>> parent of 222bff7 (Update)
 ```
 
 `'auto'` probes ESX, QBox, and QBCore via `shared/bridge.lua` at boot. Switching `VoiceBackend` doesn't require touching channel, UI, or admin code — it only changes which layer carries the audio. `Config.RadioTalksIngame = true` means holding radio PTT also transmits on proximity voice, not only the radio channel.
@@ -20,9 +26,12 @@ Config.RadioTalksIngame = true
 
 ## Standalone voice companion
 
+<<<<<<< HEAD
 !!! warning "Advanced / optional"
     `pma-voice` is the supported default for most servers — pick `standalone` only if you're comfortable operating a separate Node.js process yourself: its own ports, its own secrets, and a from-scratch P25 IMBE codec instead of pma-voice's proven pipeline.
 
+=======
+>>>>>>> parent of 222bff7 (Update)
 ```lua title="config.lua"
 Config.StandaloneVoice = {
     port = 30125,
@@ -38,6 +47,7 @@ Config.StandaloneVoice = {
 }
 ```
 
+<<<<<<< HEAD
 Only read when `Config.VoiceBackend = 'standalone'`. The Node companion (`voice_server/`) listens on `port` for WS audio + control HTTP, separately from `Config.API.socketPort` (Socket.IO dashboards). `tokenSecret` must match the `ICE_RADIO_TOKEN` environment variable on the Node side — see [Installation](installation.md) to start it.
 
 The codec itself frames PCM at 8 kHz / 20 ms / 88-bit IMBE-sized frames — see the [FAQ](faq.md) for details and the native-codec drop-in option.
@@ -93,10 +103,24 @@ Config.AudioFX = {
 ```
 
 Paths in `Config.Sounds` are relative to `html/`; swap the shipped `.wav` files under `html/sounds/` for your own pack any time. `Config.AudioFX.bonkDistortion` (interference distortion) is tunable live without a restart — see [Admin & live tuning](#admin-live-tuning).
+=======
+Set `USE_NATIVE_IMBE=1` and provide `voice_server/codec/native.node` (an mbelib/DVSI binding) for a hardware-accurate vocoder — otherwise a JS framer (`imbe.js`) is used.
+
+## Items & channels
+
+```lua title="config.lua"
+Config.Items = { radio = 'radio', requireEquipped = true, loseOnDeath = false, radioSlots = 4 }
+Config.Channels = { max = 99, encryptedByDefault = false, defaultPrimary = 1, defaultVolume = 0.8 }
+Config.Scanning = { enabled = true, holdOnActiveSeconds = 5, resumeDelayMs = 500 }
+```
+
+Conventional channels use a `frequency`; trunked channels use a `zone` → `talkgroups` structure (softkeys change zone/talkgroup). Both gate access by `jobs` and an optional `encrypted` flag requiring a `radio_encryption_key`.
+>>>>>>> parent of 222bff7 (Update)
 
 ## Channels
 
 ```lua title="config.lua"
+<<<<<<< HEAD
 Config.Channels = {
     max = 99,
     encryptedByDefault = false,
@@ -282,3 +306,30 @@ See [Events & Exports](events-exports.md#rest-api) for the actual REST/Socket.IO
 
 !!! warning "Change the default tokens"
     `Config.StandaloneVoice.tokenSecret` and `Config.API.restToken` ship with placeholder values. Change both before exposing either port publicly.
+=======
+Config.Panic = { keybind = 'F7', channel = 'PANIC', openMicSeconds = 10, tone = 'panic' }
+Config.Range = { base = 400.0, falloffStart = 300.0, minSignal = 0.05 }
+Config.Towers = { --[[ per-zone boost multiplier ]] }
+Config.DeadZones = { useInteriorCheck = true, interiorDegradation = 0.35 }
+```
+
+## Battery, GPS & vehicle radio
+
+```lua title="config.lua"
+Config.Battery = { enabled = true, drainPerMinute = 1, lowThreshold = 15, criticalThreshold = 5 }
+Config.GPS = { enabled = true, jobs = { 'police', 'sheriff', 'ambulance' }, updateIntervalMs = 3000 }
+Config.VehicleRadio = { enabled = false, policeEmsOnly = true, syncWithHandheld = true }
+```
+
+## UI, admin & API
+
+```lua title="config.lua"
+Config.UI = { defaultLayout = 'ATX-8000', requireManualPower = true }
+Config.JobRadioLayouts = { police = 'XPR-6500', ambulance = 'AFX-1500' }
+Config.Admin = { acePermission = 'ice_radio.admin', allowSpy = true, desktopWindow = true }
+Config.API = { restEnabled = true, restPort = 30126, socketPort = 30127, socketPath = '/ice-radio' }
+Config.Persistence = { autoImport = true, tablePrefix = 'ice_radio_', schemaFile = 'sql/schema.sql' }
+```
+
+Radio face layouts are **data, not code** — each lives under `layouts/<name>/` (`config.json`, `ui.html`, icons, fonts, optional sounds). Adding a new face needs a new folder + `layout.css`, no Lua changes.
+>>>>>>> parent of 222bff7 (Update)

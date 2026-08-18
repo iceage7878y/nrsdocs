@@ -1,9 +1,20 @@
 # Events & Exports
 
+<<<<<<< HEAD
 Ice_radio exposes real `exports` for other resources to call — a dispatch resource, an MDT/tablet app, or a custom inventory — plus a REST + Socket.IO API for tools that live outside the FX process entirely.
+=======
+## Client → Server events
+
+`ice_radio:server:joinChannel`, `leaveChannel`, `setTalking`, `setVolume`, `setScanList`, `savePresets`, `loadPresets`, `saveLayout`, `playerReady`, `gpsUpdate`, `proximityUpdate`, `standaloneAuth`, `replaceBattery`, `useChannelChip`, `openRadioStorage`, `prepareRadioUse`, `panic`, plus admin actions `adminOpen`, `adminSpy`, `adminJoin`, `adminForcePlayer`, `adminMute`, `adminPatch`, `adminUnpatch`, `adminLiveSetting`, `adminAlertTone`.
+
+## Server → Client events
+
+`ice_radio:client:init`, `channelJoined`, `channelLeft`, `members`, `talker`, `scanList`, `encryptedStatic`, `channelDenied`, `encryptionKeys`, `alertTone`, `liveSettings`, `presets`, `forceUntalk`, `notify`, `volume`, `battery`, `patchesUpdated`, `standaloneSession`, `standaloneTalk`, `panic`, `useItem`, `useBattery`, `useChannelChip`, `openRadioStorage`, `layoutSaved`, `adminOpen`, `adminChannel`, `adminPanic`, `adminGps`, `adminDispatchBadge`.
+>>>>>>> parent of 222bff7 (Update)
 
 ## Lua exports
 
+<<<<<<< HEAD
 ### Client & server
 
 | Export | Description |
@@ -40,12 +51,36 @@ Item-use hooks, for wiring a custom inventory:
 | `AdminSpyChannel(src, channelId)` | Silent listen |
 | `AdminJoinChannel(src, channelId)` | Join as dispatcher |
 | `SetLiveSetting(key, value)` / `GetLiveSettings()` | Hot audio/range knobs |
-
+=======
 ```lua
-exports.ice_radio:ForceChannel(target, 1)
-exports.ice_radio:BroadcastAlertTone(1, 'bolo')
-```
+-- client (also mirrored server-side where noted)
+GetPlayerChannel()
+GetPlayerSecondaryChannel()
+IsTransmitting()
+GetVoiceBackend()
+HasRadioEquipped()
+GetRadioSignal()
+GetTalkersOnChannel(channelId)
+useRadio() / useBattery() / useChannelChip() / openRadioStorage()
 
+-- server-only
+ForceChannel(src, channelId)
+SetChannelVolume(src, channelId, vol)
+PatchChannels(a, b) / UnpatchChannels(a, b)
+BroadcastAlertTone(channelId, tone)
+OpenPanic(src)
+GetChannelState()
+GetAllZones()
+AdminSpyChannel(src, channelId)
+AdminJoinChannel(src, channelId)
+SetLiveSetting(key, value)
+GetLiveSettings()
+```
+>>>>>>> parent of 222bff7 (Update)
+
+## External CAD / dispatch integration
+
+<<<<<<< HEAD
 ## Integration events
 
 Beyond the exports above, `client/*.lua` and `server/*.lua` pass dozens of `ice_radio:client:*` / `ice_radio:server:*` events back and forth (channel join/leave, talker state, presets, GPS, admin spy/join, the standalone voice session handshake, …). Those are internal plumbing between this resource's own client and server halves, not a stable public contract — use the exports instead.
@@ -101,3 +136,6 @@ s.on('panic', (p) => console.log('PANIC', p));
 
 !!! note "Where each event comes from"
     `state`, `alert`, `gps`, `panic`, and `patches` are pushed from Lua via `IceRadio.API.Broadcast`. `talk`, `settings`, and the initial `hello` come straight from the Node voice server (`voice_server/server.js`), since PTT state changes far too often to round-trip through FX.
+=======
+With `Config.API.restEnabled = true`, a REST API on `Config.API.restPort` plus a Socket.IO feed on `Config.API.socketPort`/`socketPath` expose live channel/talker state for external dashboards — this is the same feed `Config.Admin.desktopWindow` uses internally, so a third-party CAD tool can point at it directly instead of building a new admin surface.
+>>>>>>> parent of 222bff7 (Update)
