@@ -5,34 +5,35 @@ hide:
   - toc
 ---
 
-<div align="center" markdown>
+<div class="nrs-hero" markdown>
 
-![Next Resource Studio](assets/banner.png)
+<span class="nrs-hero__badge">:material-lightning-bolt: Next Resource Studio</span>
 
-# Next Resource Studio
+# Docs for everything <span class="nrs-underline">we build</span>
 
-Documentation for all FiveM resources by Next Resource Studio.
+Setup guides, config references, and troubleshooting for every FiveM resource we publish.
+
+<span class="nrs-hero__features">
+:material-code-tags: FiveM scripts&nbsp;&nbsp;&nbsp; :material-book-open-page-variant: Guides&nbsp;&nbsp;&nbsp; :material-lifebuoy: Support
+</span>
 
 [Browse Resources](resources/index.md){ .md-button .md-button--primary }
 [Getting Started](getting-started.md){ .md-button }
 
+<div class="nrs-hero__stats" markdown>
+<div class="nrs-stat"><strong>8</strong><span>Resources</span></div>
+<div class="nrs-stat"><strong>42</strong><span>Guide pages</span></div>
 </div>
 
----
+</div>
 
 ## What's here
 
-This site collects setup guides, config references, and troubleshooting for every resource we publish.
-
 <div class="grid cards" markdown>
 
-- :material-cube-outline: **[Ice_crafting](resources/ice_crafting/index.md)**
+- :material-view-grid-outline: **[Browse Resources](resources/index.md)**
 
-    Prop-based crafting stations for QBox and ESX Legacy, with a dark/minimal NUI.
-
-- :material-walkie-talkie: **[Ice_radio](resources/ice_radio/index.md)**
-
-    Handheld/mobile radio with trunked channels, encryption, and a dual voice backend.
+    Every resource we publish — installation, configuration, exports, and FAQ for each.
 
 - :material-book-open-page-variant: **[Getting Started](getting-started.md)**
 

@@ -1,9 +1,342 @@
-:root {
-  --md-primary-fg-color: #6c5ce7;
-  --md-primary-fg-color--light: #a29bfe;
-  --md-primary-fg-color--dark: #4834d4;
+/*
+  Brand match for nrstudio.dk (the store): shadcn/ui "neutral" palette,
+  dark-first, near-black surfaces, one blue accent (#1447e6).
+  Pulled from the live site's computed CSS custom properties.
+*/
+
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: #0a0a0a;
+  --md-default-fg-color--light: #404040;
+  --md-default-fg-color--lighter: #737373;
+  --md-default-fg-color--lightest: #e5e5e5;
+  --md-primary-fg-color: #171717;
+  --md-primary-bg-color: #fafafa;
+  /* Sampled from the deeper end of the logo's own "R" gradient — passes AA on white */
+  --md-typeset-a-color: #0470c8;
+  --md-accent-fg-color: #0470c8;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0a0a0a;
+  --md-default-fg-color: #fafafa;
+  --md-default-fg-color--light: #d4d4d4;
+  --md-default-fg-color--lighter: #a1a1a1;
+  --md-default-fg-color--lightest: #262626;
+  --md-primary-fg-color: #0a0a0a;
+  --md-primary-bg-color: #fafafa;
+  /* Sampled from the logo's dominant "R" blue — passes AA on the near-black bg as-is */
+  --md-typeset-a-color: #0080fa;
+  --md-accent-fg-color: #0080fa;
+  --md-code-bg-color: #171717;
+  --md-code-fg-color: #fafafa;
+}
+
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: #0a0a0a;
+  border-bottom: 1px solid #ffffff1a;
+}
+
+[data-md-color-scheme="slate"] .md-nav__source,
+[data-md-color-scheme="slate"] .md-search__form {
+  background-color: #171717;
 }
 
 .md-header__button.md-logo img {
   height: 1.4rem;
+}
+
+/* Drop the generic "Made with Material for MkDocs" attribution,
+   keep only our own copyright line */
+.md-copyright {
+  font-size: 0;
+}
+.md-copyright__highlight {
+  font-size: 0.64rem;
+  color: #a1a1a1;
+}
+
+/* ---------------------------------------------------------------------
+   Clean / modern / rounded pass — radius scale matches nrstudio.dk's
+   own tokens (10px base --radius, 14px on the primary CTA button).
+   --------------------------------------------------------------------- */
+
+:root {
+  --nrs-radius: 0.625rem;   /* 10px, same as the store's --radius */
+  --nrs-radius-lg: 0.875rem; /* 14px, matches the store's CTA buttons */
+}
+
+[data-md-color-scheme="default"] {
+  --nrs-border: #e5e5e5;
+  --nrs-surface: #f7f7f7;
+}
+
+[data-md-color-scheme="slate"] {
+  --nrs-border: #ffffff1a;
+  --nrs-surface: #171717;
+}
+
+/* Code blocks */
+.md-typeset pre,
+.md-typeset .highlight {
+  border-radius: var(--nrs-radius);
+  overflow: hidden;
+}
+.md-typeset pre > code {
+  border-radius: var(--nrs-radius);
+}
+
+/* Admonitions & collapsible details */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--nrs-radius);
+  border: 1px solid var(--nrs-border);
+  overflow: hidden;
+}
+
+/* Tables — need separate borders for the radius to render cleanly */
+.md-typeset table:not([class]) {
+  border-radius: var(--nrs-radius);
+  border: 1px solid var(--nrs-border);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+}
+.md-typeset table:not([class]) th {
+  background-color: var(--nrs-surface);
+}
+
+/* Search box — soft pill instead of the sharp default corners */
+.md-search__form {
+  border-radius: 999px;
+}
+.md-search__output {
+  border-radius: var(--nrs-radius);
+  overflow: hidden;
+}
+
+/* Buttons — match the store's rounder 14px CTAs */
+.md-typeset .md-button {
+  border-radius: var(--nrs-radius-lg);
+  transition: background-color 125ms, color 125ms, border-color 125ms, filter 125ms;
+}
+
+/* Primary CTA gets the same light-cyan-to-deep-blue gradient as the "R" in the logo */
+.md-typeset .md-button--primary {
+  background: linear-gradient(135deg, #17a3ff, #0064f0);
+  border-color: transparent;
+  color: #fff;
+}
+.md-typeset .md-button--primary:hover {
+  filter: brightness(1.1);
+  color: #fff;
+}
+
+/* Outline (secondary) button — set explicitly; Material re-derives its own
+   shade from --md-accent-fg-color otherwise and drifts off the sampled hex */
+.md-typeset .md-button:not(.md-button--primary) {
+  color: #0080fa;
+  border-color: #0080fa;
+}
+[data-md-color-scheme="default"] .md-typeset .md-button:not(.md-button--primary) {
+  color: #0470c8;
+  border-color: #0470c8;
+}
+.md-typeset .md-button:not(.md-button--primary):hover {
+  background-color: #0080fa1a;
+}
+
+/* Sidebar nav — rounded "pill" highlight on the active/hovered item,
+   instead of Material's default flat left-border indicator */
+.md-nav__link {
+  border-radius: var(--nrs-radius);
+  transition: background-color 125ms, color 125ms;
+}
+.md-nav__link:hover,
+.md-nav__link--active {
+  background-color: var(--nrs-surface);
+}
+/* Material colors the active nav item with the accent blue by default —
+   normalize it back to plain text color so every item in the list reads
+   the same weight/size, distinguished only by the pill background above. */
+.md-nav__link--active,
+.md-nav__link--active a,
+.md-nav__item--active > .md-nav__link a {
+  color: var(--md-default-fg-color) !important;
+}
+
+/* Top nav tabs — round the active tab's underline into a pill */
+.md-tabs__link {
+  transition: color 125ms;
+}
+
+/* ---------------------------------------------------------------------
+   Homepage hero — mirrors the nrstudio.dk store's hero card:
+   big rounded dark panel, dot-grid texture, pill badge, underlined
+   headline word, feature row, dual CTA, stats row.
+   --------------------------------------------------------------------- */
+
+.nrs-hero {
+  text-align: center;
+  padding: 3.5rem 2rem;
+  margin: 1rem 0 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--nrs-border);
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(circle at 1px 1px, #ffffff14 1px, transparent 0);
+  background-size: 22px 22px;
+}
+[data-md-color-scheme="default"] .nrs-hero {
+  background-color: #0a0a0a; /* hero stays dark even in light mode, like the store */
+  color: #fafafa;
+}
+[data-md-color-scheme="default"] .nrs-hero .nrs-underline,
+[data-md-color-scheme="default"] .nrs-hero h1 {
+  color: #fafafa;
+}
+
+.nrs-hero h1 {
+  font-size: 2.5rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.nrs-hero > p {
+  max-width: 40rem;
+  margin: 0 auto 1.25rem;
+  color: #a1a1a1;
+}
+
+.nrs-hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background-color: #171717;
+  border: 1px solid var(--nrs-border);
+  color: #d4d4d4;
+}
+
+.nrs-underline {
+  text-decoration: underline;
+  text-decoration-color: #0080fa;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+}
+
+.nrs-hero__features {
+  display: block;
+  font-size: 0.85rem;
+  color: #a1a1a1;
+  margin-bottom: 1.5rem;
+}
+
+.nrs-hero .md-button {
+  margin: 0.25rem 0.35rem;
+}
+
+.nrs-hero__stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--nrs-border);
+}
+.nrs-stat {
+  display: flex;
+  flex-direction: column;
+}
+.nrs-stat strong {
+  font-size: 1.75rem;
+  color: #fafafa;
+}
+.nrs-stat span {
+  font-size: 0.8rem;
+  color: #a1a1a1;
+}
+
+/* Top nav tabs — rounded active pill, like "Hjem" on the store */
+.md-tabs__link {
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  margin: 0 0.15rem;
+  transition: background-color 125ms, color 125ms;
+}
+.md-tabs__item--active .md-tabs__link,
+.md-tabs__item--active .md-tabs__link:hover {
+  background-color: #e5e5e5;
+  color: #171717 !important;
+  opacity: 1;
+}
+.md-tabs__link:hover {
+  background-color: #ffffff1a;
+}
+
+/* Make the per-resource expand/collapse toggle read as an actual button.
+   Draw the chevron ourselves instead of relying on Material's own
+   mask-image icon, which wasn't rendering visibly. */
+.md-nav__item--nested > .md-nav__link label.md-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  transition: background-color 125ms;
+  color: #a1a1a1;
+}
+.md-nav__item--nested > .md-nav__link label.md-nav__link .md-nav__icon {
+  display: none;
+}
+.md-nav__item--nested > .md-nav__link label.md-nav__link::after {
+  content: "";
+  width: 0.5em;
+  height: 0.5em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  /* No transition here by default — the JS only adds .nrs-animate on a
+     genuine click (the 'change' event), so setting state on page load /
+     instant-nav doesn't visibly animate every chevron into place. */
+}
+.md-nav__item--nested > .md-nav__link label.md-nav__link.nrs-animate::after {
+  transition: transform 125ms, color 125ms;
+}
+.md-nav__item--nested > .md-nav__link label.md-nav__link.nrs-open::after {
+  transform: rotate(-135deg);
+}
+.md-nav__item--nested > .md-nav__link label.md-nav__link:hover {
+  background-color: #ffffff1a;
+  color: #fafafa;
+}
+[data-md-color-scheme="default"] .md-nav__item--nested > .md-nav__link label.md-nav__link {
+  color: #737373;
+}
+[data-md-color-scheme="default"] .md-nav__item--nested > .md-nav__link label.md-nav__link:hover {
+  background-color: #0000000f;
+  color: #0a0a0a;
+}
+
+/* Material force-shows the *active* section's nested nav regardless of the
+   toggle checkbox — override so unchecked (collapsed) really stays hidden,
+   even for the section containing the current page. */
+.md-nav__item--nested > input.md-nav__toggle:not(:checked) ~ nav.md-nav {
+  display: none !important;
+}
+
+/* Cards on the homepage grid */
+.md-typeset .grid.cards > ul > li,
+.md-typeset .grid.cards > ol > li {
+  border-radius: var(--nrs-radius-lg);
+  transition: border-color 125ms, transform 125ms;
+}
+.md-typeset .grid.cards > ul > li:hover,
+.md-typeset .grid.cards > ol > li:hover {
+  transform: translateY(-2px);
 }
